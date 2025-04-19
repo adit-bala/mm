@@ -65,6 +65,11 @@ export const getRoom = async (code4) => {
   return response.data;
 };
 
+export const deleteRoom = async (code4) => {
+  const response = await api.delete(`/rooms/${code4}`);
+  return response.data;
+};
+
 export const getRoomMessages = async (code4) => {
   const response = await api.get(`/rooms/${code4}/messages`);
   return response.data;

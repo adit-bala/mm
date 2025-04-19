@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from fastapi.security import OAuth2PasswordRequestForm
-from sqlmodel import Session, select
+from sqlmodel import Session, select, delete
 from typing import List, Dict, Optional
 import random
 import string
@@ -92,6 +92,22 @@ async def create_room(room_data: RoomCreate, current_user: User = Depends(get_ad
     session.refresh(room)
 
     return room
+
+@router.delete("/rooms/{code4}")
+async def delete_room(code4: str, current_user: User = Depends(get_admin_user), session: Session = Depends(get_session)):
+    """Delete a room (admin only)"""
+    room = session.exec(select(Room).where(Room.code4 == code4)).first()
+    if not room:
+        raise HTTPException(status_code=404, detail="Room not found")
+
+    # Delete all messages in the room
+    session.exec(delete(Message).where(Message.room_id == room.id))
+
+    # Delete the room
+    session.delete(room)
+    session.commit()
+
+    return {"status": "success", "message": f"Room {code4} deleted successfully"}
 
 @router.get("/rooms/{code4}", response_model=RoomResponse)
 async def get_room(code4: str, current_user: User = Depends(get_current_user), session: Session = Depends(get_session)):

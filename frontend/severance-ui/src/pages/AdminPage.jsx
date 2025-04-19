@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import { getPersonas, getMurderClues, createRoom, getAllRooms } from '../api/api';
+import { getPersonas, getMurderClues, createRoom, getAllRooms, deleteRoom } from '../api/api';
 import { useAuth } from '../contexts/AuthContext';
 
 const AdminPage = () => {
@@ -73,6 +73,19 @@ const AdminPage = () => {
       setError('Failed to create room');
     } finally {
       setCreatingRoom(false);
+    }
+  };
+
+  const handleDeleteRoom = async (code4) => {
+    if (window.confirm(`Are you sure you want to delete room ${code4}? This action cannot be undone.`)) {
+      try {
+        await deleteRoom(code4);
+        // Refresh the rooms list after deletion
+        await refreshRooms();
+      } catch (err) {
+        console.error('Error deleting room:', err);
+        alert('Failed to delete room. Please try again.');
+      }
     }
   };
 
@@ -163,12 +176,20 @@ const AdminPage = () => {
                             {new Date(room.created_at).toLocaleString()}
                           </td>
                           <td className="px-4 py-3 whitespace-nowrap text-sm">
-                            <button
-                              onClick={() => navigate(`/room/${room.code4}`)}
-                              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-1 px-3 rounded-lg text-xs"
-                            >
-                              Join Room
-                            </button>
+                            <div className="flex space-x-2">
+                              <button
+                                onClick={() => navigate(`/room/${room.code4}`)}
+                                className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-1 px-3 rounded-lg text-xs"
+                              >
+                                Join
+                              </button>
+                              <button
+                                onClick={() => handleDeleteRoom(room.code4)}
+                                className="bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-3 rounded-lg text-xs"
+                              >
+                                Delete
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
