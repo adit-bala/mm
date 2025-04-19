@@ -66,6 +66,12 @@ async def get_murder_clues(current_user: User = Depends(get_admin_user)):
         "to_innies": SEED_DATA["clues_murder"]["to_innies"]
     }
 
+@router.get("/rooms", response_model=List[RoomResponse])
+async def get_all_rooms(current_user: User = Depends(get_admin_user), session: Session = Depends(get_session)):
+    """Get all rooms (admin only)"""
+    rooms = session.exec(select(Room).order_by(Room.created_at.desc())).all()
+    return rooms
+
 @router.post("/rooms", response_model=RoomResponse)
 async def create_room(room_data: RoomCreate, current_user: User = Depends(get_admin_user), session: Session = Depends(get_session)):
     # Generate a random 4-character code

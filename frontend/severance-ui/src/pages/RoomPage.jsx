@@ -166,7 +166,11 @@ const RoomPage = () => {
                 Room: {code4}
               </h1>
               <div className="text-sm text-gray-500 dark:text-gray-400">
-                Chatting with: {room.playerA === user.username ? room.playerB : room.playerA}
+                {user.role === 'admin' ? (
+                  <span>Observing: {room.playerA} & {room.playerB}</span>
+                ) : (
+                  <span>Chatting with: {room.playerA === user.username ? room.playerB : room.playerA}</span>
+                )}
               </div>
             </div>
           </div>

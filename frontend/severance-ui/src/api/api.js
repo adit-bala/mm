@@ -50,6 +50,11 @@ export const getMurderClues = async () => {
 };
 
 // Rooms API
+export const getAllRooms = async () => {
+  const response = await api.get('/rooms');
+  return response.data;
+};
+
 export const createRoom = async (playerA, playerB) => {
   const response = await api.post('/rooms', { playerA, playerB });
   return response.data;
