@@ -96,22 +96,6 @@ const DossiersPage = () => {
               </nav>
             </div>
             
-            {/* Clues */}
-            {clues.length > 0 && (
-              <div className="mb-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  Your Clues:
-                </h2>
-                <ul className="list-disc pl-5 space-y-1">
-                  {clues.map((clue, index) => (
-                    <li key={index} className="text-gray-700 dark:text-gray-300">
-                      {clue}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            
             {/* Personas Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPersonas.map((persona) => (

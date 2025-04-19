@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { getRoom, getRoomMessages, sendMessage, streamMessages } from '../api/api';
+import { saveRoom } from '../utils/roomStorage';
 
 const RoomPage = () => {
   const { code4 } = useParams();
@@ -29,6 +30,11 @@ const RoomPage = () => {
         ]);
         setRoom(roomData);
         setMessages(messagesData);
+
+        // Save room to localStorage for easy access later (only for regular users)
+        if (user && user.role !== 'admin') {
+          saveRoom(user.username, roomData);
+        }
       } catch (err) {
         console.error('Error fetching room data:', err);
         if (err.response?.status === 404) {
@@ -51,7 +57,7 @@ const RoomPage = () => {
         clearTimeout(pollingRef.current);
       }
     };
-  }, [code4]);
+  }, [code4, user]);
 
   // Set up message polling
   useEffect(() => {
