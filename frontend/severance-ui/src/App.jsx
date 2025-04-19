@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage';
 import DossiersPage from './pages/DossiersPage';
 import RoomPage from './pages/RoomPage';
 import AdminPage from './pages/AdminPage';
+import DirectMessagesPage from './pages/DirectMessagesPage';
 
 function App() {
   // Initialize dark mode based on user preference or localStorage
@@ -61,6 +62,15 @@ function App() {
             element={
               <ProtectedRoute adminOnly={true}>
                 <AdminPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/direct-messages"
+            element={
+              <ProtectedRoute adminOnly={true}>
+                <DirectMessagesPage />
               </ProtectedRoute>
             }
           />

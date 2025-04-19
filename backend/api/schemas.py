@@ -50,3 +50,16 @@ class PersonaResponse(BaseModel):
     username: str
     group: str
     description: str
+
+# Direct Message schemas
+class DirectMessageCreate(BaseModel):
+    user_username: str
+    content: str
+
+class DirectMessageResponse(BaseModel):
+    id: int
+    admin_username: str
+    user_username: str
+    content: str
+    is_read: bool
+    ts: datetime

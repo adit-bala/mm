@@ -9,11 +9,12 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 
 from .database import get_session
-from .models import User, Persona, Room, Message
+from .models import User, Persona, Room, Message, DirectMessage
 from .schemas import (
     Token, UserResponse, RoomCreate, RoomResponse,
     MessageCreate, MessageResponse, CluesResponse,
-    MurderCluesResponse, PersonaResponse
+    MurderCluesResponse, PersonaResponse,
+    DirectMessageCreate, DirectMessageResponse
 )
 from .auth import (
     authenticate_user, create_access_token,
@@ -249,3 +250,70 @@ def notify_clients(code4: str):
     # Clear the events and waiting clients
     message_events[code4] = []
     waiting_clients[code4] = []
+
+# Direct Message endpoints
+@router.post("/direct-messages", response_model=DirectMessageResponse)
+async def create_direct_message(
+    message_data: DirectMessageCreate,
+    current_user: User = Depends(get_admin_user),
+    session: Session = Depends(get_session)
+):
+    """Create a direct message from admin to user"""
+    # Verify the user exists
+    user = session.exec(select(User).where(User.username == message_data.user_username)).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    # Create the direct message
+    direct_message = DirectMessage(
+        admin_username=current_user.username,
+        user_username=message_data.user_username,
+        content=message_data.content
+    )
+
+    session.add(direct_message)
+    session.commit()
+    session.refresh(direct_message)
+
+    return direct_message
+
+@router.get("/direct-messages/sent", response_model=List[DirectMessageResponse])
+async def get_sent_direct_messages(current_user: User = Depends(get_admin_user), session: Session = Depends(get_session)):
+    """Get all direct messages sent by the admin"""
+    messages = session.exec(
+        select(DirectMessage)
+        .where(DirectMessage.admin_username == current_user.username)
+        .order_by(DirectMessage.ts.desc())
+    ).all()
+
+    return messages
+
+@router.get("/direct-messages/received", response_model=List[DirectMessageResponse])
+async def get_received_direct_messages(current_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+    """Get all direct messages received by the user"""
+    messages = session.exec(
+        select(DirectMessage)
+        .where(DirectMessage.user_username == current_user.username)
+        .order_by(DirectMessage.ts.desc())
+    ).all()
+
+    # Mark messages as read
+    for message in messages:
+        if not message.is_read:
+            message.is_read = True
+            session.add(message)
+
+    session.commit()
+
+    return messages
+
+@router.get("/direct-messages/unread-count")
+async def get_unread_count(current_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+    """Get count of unread direct messages for the user"""
+    count = session.exec(
+        select(DirectMessage)
+        .where(DirectMessage.user_username == current_user.username)
+        .where(DirectMessage.is_read == False)
+    ).all()
+
+    return {"unread_count": len(count)}

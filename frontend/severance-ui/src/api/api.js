@@ -87,3 +87,24 @@ export const streamMessages = async (code4, afterMessageId) => {
   });
   return response.data;
 };
+
+// Direct Messages API
+export const sendDirectMessage = async (username, content) => {
+  const response = await api.post('/direct-messages', { user_username: username, content });
+  return response.data;
+};
+
+export const getSentDirectMessages = async () => {
+  const response = await api.get('/direct-messages/sent');
+  return response.data;
+};
+
+export const getReceivedDirectMessages = async () => {
+  const response = await api.get('/direct-messages/received');
+  return response.data;
+};
+
+export const getUnreadMessageCount = async () => {
+  const response = await api.get('/direct-messages/unread-count');
+  return response.data;
+};
