@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  severance-app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app/backend
+      - severance-data:/app/data
+    environment:
+      - DATABASE_URL=sqlite:///./data/severance.db
+    restart: unless-stopped
+
+volumes:
+  severance-data:
+    driver: local
