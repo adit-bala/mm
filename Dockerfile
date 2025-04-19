@@ -21,6 +21,9 @@ COPY backend/ ./backend/
 # Copy frontend build
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 
+# Create data directory for persistent storage
+RUN mkdir -p /app/data
+
 # Set environment variables
 ENV PYTHONPATH=/app
 
