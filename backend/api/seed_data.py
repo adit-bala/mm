@@ -7,25 +7,23 @@ from .auth import get_password_hash
 SEED_DATA = {
   "users": [
     # role = "admin" gets dashboard access
-    { "username": "admin", "password_plain": "changeme", "role": "admin" },
+    { "username": "admin", "password_plain": "admin123", "role": "admin" },
 
     # 14 regular players, role = "player"
-    { "username": "Dhruv",   "password_plain": "play123", "role": "player" },
-    { "username": "Aishani", "password_plain": "play123", "role": "player" },
-    { "username": "Pragya",  "password_plain": "play123", "role": "player" },
-    { "username": "Saurav",  "password_plain": "play123", "role": "player" },
-    { "username": "Kailyn",  "password_plain": "play123", "role": "player" },
-    { "username": "Janani",  "password_plain": "play123", "role": "player" },
-    { "username": "Srihitha","password_plain": "play123", "role": "player" },
-    { "username": "Vijay",   "password_plain": "play123", "role": "player" },
-    { "username": "Reena",   "password_plain": "play123", "role": "player" },
-    { "username": "Riteka",  "password_plain": "play123", "role": "player" },
-    { "username": "Varun",   "password_plain": "play123", "role": "player" },
-    { "username": "Sree",    "password_plain": "play123", "role": "player" },
-    { "username": "Suhani",  "password_plain": "play123", "role": "player" },
-    { "username": "Marissa", "password_plain": "play123", "role": "player" },
-    { "username": "Ishan",   "password_plain": "play123", "role": "player" },
-    { "username": "Gaurav",  "password_plain": "play123", "role": "player" }
+    { "username": "Dhruv",   "password_plain": "bike123", "role": "player" },
+    { "username": "Aishani", "password_plain": "silver22", "role": "player" },
+    { "username": "Pragya",  "password_plain": "elmwood3", "role": "player" },
+    { "username": "Saurav",  "password_plain": "moto18", "role": "player" },
+    { "username": "Kailyn",  "password_plain": "pine11", "role": "player" },
+    { "username": "Srihitha","password_plain": "cedar9", "role": "player" },
+    { "username": "Vijay",   "password_plain": "dog25", "role": "player" },
+    { "username": "Reena",   "password_plain": "dino12", "role": "player" },
+    { "username": "Riteka",  "password_plain": "notes31", "role": "player" },
+    { "username": "Sree",    "password_plain": "solar41", "role": "player" },
+    { "username": "Suhani",  "password_plain": "mango40", "role": "player" },
+    { "username": "Marissa", "password_plain": "cube12", "role": "player" },
+    { "username": "Janani",  "password_plain": "chai30", "role": "player" },
+    { "username": "Gaurav",  "password_plain": "ball42", "role": "player"}
   ],
 
   "personas": {
@@ -35,18 +33,16 @@ SEED_DATA = {
       "Pragya":  "3 Elmwood Ct • rides the light rail • vanilla cappuccino • sketches cafés in accordion notebook • mismatched socks",
       "Saurav":  "18 Rosewood Dr • black motorcycle • cold‑brew coffee, black • Friday street‑badminton • limited‑edition sneaker hoard",
       "Kailyn":  "11 Pinewood Ter • lime e‑scooter share • mango smoothie • dawn pier‑yoga coach • bright coral water bottle",
-      "Janani":  "7 Maplewood Cres • teal wagon w/ surf rack • spiced ginger chai • beachcombs seashells • thin silver ankle bracelet",
       "Srihitha":"9 Cedarwood Walk • lavender electric scooter • chilled hibiscus tea • cryptogram‑puzzle addict • pocket chess set",
       "Vijay":   "25 Dogwood Cir • red sports car • straight Americano • collects antique fedoras • always carries a silver pen"
     },
     "innies": {
       "Reena":   "Cubicle G12 • badge 15624 • chamomile tea • plush dino • dark chocolate",
-      "Riteka":  "Cubicle B31 • badge 79888 • cinnamon‑oat latte • animal‑USB stash • neon notes",
-      "Varun":   "Cubicle B30 • badge 69071 • lime sparkling water • dad‑joke calendar • trail mix",
-      "Sree":    "Cubicle G41 • badge 42322 • hazelnut latte • mini solar system • mixed nuts",
+      "Riteka":  "Cubicle B31 • badge 79888 • cinnamon‑oat latte • animal‑USB stash • neon sticky‑notes",
+      "Sree":    "Cubicle G41 • badge 42322 • hazelnut latte • mini solar‑system model • mixed nuts",
       "Suhani":  "Cubicle G40 • badge 17255 • mango smoothie • coral stamp pad • blueberry‑oat cookies",
-      "Marissa": "Cubicle D12 • badge 03414 • peppermint hot‑choc • glass‑cube weight • ginger cookies",
-      "Ishan":   "Cubicle D11 • badge 39239 • black coffee • pocket Rubik's cube • granola bars",
+      "Marissa": "Cubicle D12 • badge 03414 • peppermint hot‑choc • glass‑cube paperweight • ginger cookies",
+      "Janani":  "Cubicle B30 • badge 69071 • spiced ginger chai • beach‑combs seashells • thin silver ankle bracelet",
       "Gaurav":  "Cubicle C42 • badge 63006 • berry protein shake • cassette stress‑ball • gummy bears"
     }
   },
@@ -54,19 +50,19 @@ SEED_DATA = {
   "clues_regular": {
     "Dhruv":   ["badge last digit <5", "non‑coffee hot drink", "plush dino"],
     "Aishani": ["cubicle B or D", "badge even", "animal USB"],
-    "Pragya":  ["cubicle ends 0/1", "double digits", "coral stamp"],
+    "Pragya":  ["cubicle ends 0/1", "identical digits", "coral stamp"],
     "Saurav":  ["badge 2/4/8", "cubicle G", "mini solar system"],
     "Kailyn":  ["cubicle B or D", "badge even", "glass cube"],
-    "Janani":  ["cubicle B or D", "badge odd", "dad‑joke calendar"],
     "Srihitha":["cubicle ends 1/2", "coffee drink", "pocket Rubik's cube"],
+    "Vijay":   ["badge last digit >5", "motorized vehicle", "antique fedoras"],
 
     "Reena":   ["two‑wheel commute", "coffee drink", "collects postcards"],
     "Riteka":  ["car OR light‑rail", "tea drink", "carries herbs"],
-    "Varun":   ["tea or smoothie", "four‑wheel vehicle", "silver anklet"],
     "Sree":    ["two‑wheel commute", "coffee drink", "street badminton"],
     "Suhani":  ["coffee drink", "no personal vehicle", "café sketches"],
     "Marissa": ["two‑wheel commute", "NOT coffee", "coral bottle"],
-    "Ishan":   ["cold drink", "electric two‑wheeler", "cryptogram puzzles"]
+    "Janani":  ["badge digits even sum", "cubicle row B", "silver anklet"],
+    "Gaurav":  ["badge last digit even", "protein shake", "cassette stress‑ball"]
   },
 
   "clues_murder": {
