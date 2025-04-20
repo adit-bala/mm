@@ -67,14 +67,15 @@ SEED_DATA = {
 
   "clues_murder": {
     "to_outies": [
-      "badge ends 2/4/6",
-      "cubicle letter C or D",
-      "drinks NO coffee or tea"
+      "coffee‑based beverage",
+      "innie murderer is in cubicle letter C or D",
+      "collects unusual fashion items"
     ],
     "to_innies": [
-      "coffee‑based beverage",
-      "motorized vehicle",
-      "collects unusual fashion items"
+      "badge ends 2/4/6",
+      "outie murderer has a motorized vehicle",
+      "drinks NO coffee or tea"
+      
     ]
   }
 }
