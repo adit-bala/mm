@@ -32,18 +32,18 @@ SEED_DATA = {
       "Aishani": "22 Birchwood Ave • silver hatchback w/ bird decal • iced matcha latte • street‑mural photographer • canvas tote of fresh herbs",
       "Pragya":  "3 Elmwood Ct • rides the light rail • vanilla cappuccino • sketches cafés in accordion notebook • mismatched socks",
       "Saurav":  "18 Rosewood Dr • black motorcycle • cold‑brew coffee, black • Friday street‑badminton • limited‑edition sneaker hoard",
+      "Vijay":   "25 Dogwood Cir • red sports car • straight Americano • collects antique fedoras • always carries a silver pen",
       "Kailyn":  "11 Pinewood Ter • lime e‑scooter share • mango smoothie • dawn pier‑yoga coach • bright coral water bottle",
       "Srihitha":"9 Cedarwood Walk • lavender electric scooter • chilled hibiscus tea • cryptogram‑puzzle addict • pocket chess set",
-      "Vijay":   "25 Dogwood Cir • red sports car • straight Americano • collects antique fedoras • always carries a silver pen"
     },
     "innies": {
-      "Reena":   "Cubicle G12 • badge 15624 • chamomile tea • plush dino • dark chocolate",
-      "Riteka":  "Cubicle B31 • badge 79888 • cinnamon‑oat latte • animal‑USB stash • neon sticky‑notes",
+      "Gaurav":  "Cubicle C42 • badge 63006 • berry protein shake • cassette stress‑ball • gummy bears",
       "Sree":    "Cubicle G41 • badge 42322 • hazelnut latte • mini solar‑system model • mixed nuts",
-      "Suhani":  "Cubicle G40 • badge 17255 • mango smoothie • coral stamp pad • blueberry‑oat cookies",
+      "Reena":   "Cubicle G12 • badge 15624 • chamomile tea • plush dino • dark chocolate",
       "Marissa": "Cubicle D12 • badge 03414 • peppermint hot‑choc • glass‑cube paperweight • ginger cookies",
       "Janani":  "Cubicle B30 • badge 69071 • spiced ginger chai • beach‑combs seashells • thin silver ankle bracelet",
-      "Gaurav":  "Cubicle C42 • badge 63006 • berry protein shake • cassette stress‑ball • gummy bears"
+      "Riteka":  "Cubicle B31 • badge 79888 • cinnamon‑oat latte • animal‑USB stash • neon sticky‑notes",
+      "Suhani":  "Cubicle G40 • badge 17255 • mango smoothie • coral stamp pad • blueberry‑oat cookies",
     }
   },
 
